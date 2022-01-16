@@ -462,7 +462,7 @@ SET `salary` = `salary` * 1.1;
 SELECT `salary` FROM `employees`;
 
 # Exercise 18 Delete All Records
-
+DELETE FROM occupancies ;
 
 
 
