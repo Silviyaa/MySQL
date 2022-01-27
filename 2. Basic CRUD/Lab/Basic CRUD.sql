@@ -43,3 +43,13 @@ FROM `countries`
 WHERE `continent_code` = 'EU'
 ORDER BY population DESC , country_name LIMIT 30;
 
+#Ex: 23.Countries and Currency (Euro / Not Euro)
+SELECT `country_name`, `country_code`, 
+IF(`currency_code` = 'EUR', 'Euro', 'Not Euro') as 'currency'
+FROM `countries` 
+ORDER BY country_name ASC ;
+
+#Еx: 24. All Diablo Characters
+SELECT `name`
+from `characters`
+ORDER BY `name`ASC;
