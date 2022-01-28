@@ -13,8 +13,21 @@
 #Ex: 03. Find First Names of All Employess
 SELECT `first_name`
 from employees
-WHERE `department_id` IN (3,10) and `hire_date` BETWEEN(year(1995 and 2005))
+WHERE `department_id` IN (3,10) and year(`hire_date`) BETWEEN 1995 and 2005
 ORDER BY `employee_id`;
-   
+
+#Ex: 04. Find All Employees Except Engineers
+SELECT `first_name`, `last_name`
+from employees
+WHERE `job_title` NOT LIKE '%engineer%'
+ORDER BY `employee_id`;
+
+#Ex: 05. Find Towns with Name Length
+SELECT `name`
+FROM `towns`
+WHERE char_length(`name`) IN (5,6)
+ORDER BY `name` ASC;
+
+
    
    
