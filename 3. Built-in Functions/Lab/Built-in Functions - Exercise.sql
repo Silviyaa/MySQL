@@ -28,6 +28,26 @@ FROM `towns`
 WHERE char_length(`name`) IN (5,6)
 ORDER BY `name` ASC;
 
+#Ex: 06. Find Towns Starting With
+SELECT `town_id`,`name`
+FROM `towns`
+WHERE LEFT( `name`,1) IN ('M','K','B','E')
+ORDER BY `name` ASC;
 
+#Ex: 07. Find Towns Not Starting With
+ SELECT `town_id`,`name`
+FROM `towns`
+WHERE LEFT( `name`,1) NOT IN ('R','B','D')
+ORDER BY `name` ASC;
    
-   
+
+#Ex: 08. Create View Employees Hired After
+CREATE VIEW v_employees_hired_after_2000 as
+SELECT `first_name`,`last_name`
+FROM employees
+WHERE year(hire_date) > 2000;
+
+#Ex: 09.	Length of Last Name
+
+ 
+
