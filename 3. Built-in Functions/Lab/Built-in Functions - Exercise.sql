@@ -47,7 +47,9 @@ SELECT `first_name`,`last_name`
 FROM employees
 WHERE year(hire_date) > 2000;
 
-#Ex: 09.	Length of Last Name
-
+#Ex: 09.Length of Last Name
+SELECT `first_name`,`last_name`
+FROM employees
+WHERE char_length(`first_name`) IN (5) or char_length(`last_name`) in (5);
  
 
