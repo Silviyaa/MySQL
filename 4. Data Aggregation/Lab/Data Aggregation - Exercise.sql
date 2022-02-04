@@ -75,4 +75,8 @@ GROUP BY deposit_group, is_deposit_expired
 ORDER BY deposit_group DESC , is_deposit_expired;
 
 #Ex: 12. Employees Minimum Salaries 
- 
+SELECT department_id, MIN(salary) as 'minimum_salary'
+FROM employees
+WHERE department_id in (2,5,7) and year(hire_date) >= 2000
+GROUP BY department_id
+ORDER BY department_id asc;
