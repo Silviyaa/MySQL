@@ -80,3 +80,12 @@ FROM employees
 WHERE department_id in (2,5,7) and year(hire_date) >= 2000
 GROUP BY department_id
 ORDER BY department_id asc;
+
+#Ex: 13. Employees Average Salaries
+CREATE TABLE `new_table`as
+SELECT * from employees
+WHERE salary > 30000 and manager_id != 42; 
+
+UPDATE new_table
+SET `salary` = `salary` + 5000
+WHERE `department_id` = 1;
