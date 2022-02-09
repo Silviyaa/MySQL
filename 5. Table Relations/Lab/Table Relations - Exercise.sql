@@ -135,3 +135,31 @@ FOREIGN KEY (manager_id)
 REFERENCES teachers (teacher_id);
 
 #Ex: 05. Online Store Database 
+CREATE DATABASE online_store;
+CREATE TABLE cities(
+	city_id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NULL
+);
+
+CREATE TABLE customers(
+	customer_id INT(11) PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(50) NULL,
+    birthday DATE NULL,
+    city_id INT(11),
+    
+    CONSTRAINT fk_customers_cities
+    FOREIGN KEY (city_id)
+    REFERENCES cities (city_id)
+);
+
+CREATE TABLE orders(
+	order_id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT(11),
+    
+    CONSTRAINT fk_orders_customers
+    FOREIGN KEY (customer_id)
+    REFERENCES customers (customer_id)
+);
+
+
+
