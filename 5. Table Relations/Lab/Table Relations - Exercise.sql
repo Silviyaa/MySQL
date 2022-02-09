@@ -110,3 +110,28 @@ VALUES
 (3,103),
 (2,102),
 (2,103);
+
+#Ex: 04. Self-Referencing 
+CREATE DATABASE teachers;
+
+CREATE TABLE teachers(
+	teacher_id INT PRIMARY KEY AUTO_INCREMENT,
+    name varchar(20) NOT NULL,
+    manager_id INT
+)AUTO_INCREMENT = 101;
+
+INSERT INTO teachers (name,manager_id)
+VALUES
+('John', NULL),
+('Maya',106),
+('Silvia',106),
+('Ted',105),
+('Mark',101),
+('Greta',101);
+
+ALTER TABLE teachers
+ADD CONSTRAINT fk_teacher_manager
+FOREIGN KEY (manager_id)
+REFERENCES teachers (teacher_id);
+
+#Ex: 05. Online Store Database 
