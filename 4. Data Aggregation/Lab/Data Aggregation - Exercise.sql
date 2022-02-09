@@ -105,9 +105,36 @@ ORDER BY department_id asc;
 #Ex: 15. Employees Count Salaries
 SELECT COUNT(salary)
 FROM employees
-HAVING job_title LIKE 'manager';
+WHERE manager_id is null ;
 
 #Ex: 16. 3rd Highest Salary*
-SELECT department_id, (salary) as 'third_highest_salary'
-FROM employees
-GROUP BY department_id
+SELECT e.`department_id`, 
+(
+	SELECT DISTINCT e2.`salary` FROM `employees` as e2
+    WHERE e2.`department_id` = e.`department_id`
+    ORDER BY e2.`salary` DESC
+    LIMIT 1 OFFSET 2
+) as `third_highest_salary`
+FROM `employees` as e
+GROUP BY e.`department_id`
+HAVING `third_highest_salary` IS NOT NULL
+ORDER BY e.`department_id`;
+
+#Ex:  17. Salary Challenge**
+SELECT e.`first_name`, e.`last_name`, e.`department_id`
+FROM `employees` as e WHERE e.`salary` > 
+(	
+	SELECT AVG(e2.salary) 
+	FROM employees as e2
+	WHERE e2.`department_id` = e.`department_id`
+)
+ORDER BY `department_id`, `employee_id`
+LIMIT 10;
+
+#Ex: 18. Departments Total Salaries 
+select `department_id`, sum(salary) as 'total_salary'
+from employees
+GROUP BY `department_id`
+order by `department_id`;
+
+
