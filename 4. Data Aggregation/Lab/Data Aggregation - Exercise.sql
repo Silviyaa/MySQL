@@ -86,6 +86,28 @@ CREATE TABLE `new_table`as
 SELECT * from employees
 WHERE salary > 30000 and manager_id != 42; 
 
-UPDATE new_table
+UPDATE `new_table`
 SET `salary` = `salary` + 5000
 WHERE `department_id` = 1;
+
+SELECT department_id, avg(salary) as avg_salary
+FROM new_table
+GROUP BY department_id
+order BY department_id;
+
+#Ex: 14. Employees Maximum Salaries
+SELECT department_id,max(salary) as max_salary
+FROM employees
+GROUP BY department_id
+HAVING max_salary < 30000 or max_salary > 70000
+ORDER BY department_id asc;
+
+#Ex: 15. Employees Count Salaries
+SELECT COUNT(salary)
+FROM employees
+HAVING job_title LIKE 'manager';
+
+#Ex: 16. 3rd Highest Salary*
+SELECT department_id, (salary) as 'third_highest_salary'
+FROM employees
+GROUP BY department_id
