@@ -27,3 +27,29 @@ JOIN departments as d
 on e.department_id = d.department_id
 WHERE d.name = 'Sales'
 ORDER BY e.employee_id DESC;
+
+#Ex: 04. Employee Departments
+SELECT e.employee_id, e.first_name, e.salary, d.name
+FROM employees as e
+JOIN departments as d
+USING(department_id)
+WHERE salary > round((15000),2)
+ORDER BY department_id DESC
+limit 5;
+
+#Ex: 05. Employees Without Project
+SELECT e.employee_id, e.first_name
+FROM employees as e
+LEFT JOIN employees_projects as ep
+on e.employee_id = ep.employee_id
+WHERE ep.project_id IS NULL
+ORDER BY e.employee_id DESC
+LIMIT 3;
+
+#Ex:  06. Employees Hired After
+SELECT  e.first_name, e.last_name, e.hire_date, d.name
+FROM employees as e
+JOIN departments as d
+USING(department_id)
+where e.hire_date > 1990-01-01 and d.name IN ('Sales','Finance')
+ORDER BY e.hire_date asc;
