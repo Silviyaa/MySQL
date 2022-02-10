@@ -20,3 +20,10 @@ on a.town_id = t.town_id
 ORDER BY first_name ASC, last_name ASC
 LIMIT 5;
 
+#Ex: 03. Sales Employee 
+SELECT e.employee_id, e.first_name, e.last_name, d.`name`
+FROM employees as e
+JOIN departments as d
+on e.department_id = d.department_id
+WHERE d.name = 'Sales'
+ORDER BY e.employee_id DESC;
