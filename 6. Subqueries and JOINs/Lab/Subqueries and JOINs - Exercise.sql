@@ -53,3 +53,28 @@ JOIN departments as d
 USING(department_id)
 where e.hire_date > 1990-01-01 and d.name IN ('Sales','Finance')
 ORDER BY e.hire_date asc;
+
+#Ex: 07. Employees with Project 
+SELECT  e.employee_id,e.first_name, p.name
+FROM employees as e
+JOIN employees_projects as ep
+USING(employee_id)
+JOIN projects as p
+USING(project_id)
+WHERE DATE(p.start_date) > '2002-08-13' and p.end_date IS NULL
+ORDER BY e.first_name ASC , p.name ASC
+LIMIT 5;
+
+#Ex: 08. Employee 24
+SELECT e.employee_id,e.first_name, if(year(p.start_date) > 2004,NULL,p.name) as p_name
+FROM employees as e
+JOIN employees_projects as ep
+USING(employee_id)
+JOIN projects as p
+USING(project_id)
+WHERE e.employee_id = 24 
+ORDER BY p_name;
+
+#Ex: 09. Employee Manager
+
+#Ex:  10. Employee Summary
