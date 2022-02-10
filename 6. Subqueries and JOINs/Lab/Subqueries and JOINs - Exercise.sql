@@ -78,3 +78,13 @@ ORDER BY p_name;
 #Ex: 09. Employee Manager
 
 #Ex:  10. Employee Summary
+SELECT e.employee_id, 
+concat_ws(' ',e.first_name, e.last_name) as employee_name ,
+concat_ws(' ',m.first_name, m.last_name) as manager_name,
+d.name
+FROM employees as e
+join employees as m
+on e.manager_id = m.employee_id
+join departments as d
+on e.department_id = d.department_id
+ORDER BY employee_id
