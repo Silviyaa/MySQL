@@ -88,3 +88,4 @@ on e.manager_id = m.employee_id
 join departments as d
 on e.department_id = d.department_id
 ORDER BY employee_id
+LIMIT 5;
