@@ -84,4 +84,28 @@ END $$
 
 CALL usp_get_employees_by_salary_level ('Hight')
 
-#Ex: 08. Find Full Name
+#Ex: 10. Future Value Function
+DELIMITER $$
+CREATE FUNCTION ufn_calculate_future_value(sum DECIMAL(19,4), interest DOUBLE, years INT)
+RETURNS DECIMAL(19,4)
+DETERMINISTIC
+BEGIN
+	RETURN( sum * POW(1+interest,years) );
+END$$
+DELIMITER ;
+
+SELECT ufn_calculate_future_value(1000,0.5,5)
+
+#Ex: 11. Calculating Interest
+DELIMITER $$
+CREATE PROCEDURE usp_calculate_future_value_for_account(acc_id INT, interest DOUBLE)
+BEGIN
+	SELECT a.id, ah.first_name, ah.last_name, a.balance,
+	ufn_calculate_future_value(a.balance,interest,5) as 'balance_in_5_years'
+	FROM accounts as a
+	JOIN account_holders as ah
+	on a.account_holder_id = ah.id
+    WHERE a.id = acc_id;
+END$$
+
+call usp_calculate_future_value_for_account(1,0.1)
