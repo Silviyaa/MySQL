@@ -99,9 +99,9 @@ where s.id is null
 );
 
 #3.	Update
-update employees 
-set year(hire_date) > 2003
-where store_id not like 'Cardguard' and store_id not like 'Veribet'
-and manager_id = 3 and salary = salary - 500 ;
+# update employees 
+# set year(hire_date) > 2003
+# where store_id not like 'Cardguard' and store_id not like 'Veribet'
+# and manager_id = 3 and salary = salary - 500 ;
 
 
